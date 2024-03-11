@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_tracker_daily_tasker/models/models.dart';
 
 class DateCard extends StatelessWidget {
-  final WeeklyDate weeklyDate;
+  final Data dailyData;
   final bool isSelected;
   final VoidCallback onSelect;
 
   const DateCard({
     Key? key,
-    required this.weeklyDate,
+    required this.dailyData,
     required this.isSelected,
     required this.onSelect,
   }) : super(key: key);
@@ -44,7 +44,7 @@ class DateCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                weeklyDate.name,
+                dailyData.name,
                 style: GoogleFonts.inter(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class DateCard extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                weeklyDate.number,
+                dailyData.number,
                 style: GoogleFonts.pressStart2p(
                     fontSize: 14,
                     color: isSelected ? Colors.black : Color(0xffE45613)),

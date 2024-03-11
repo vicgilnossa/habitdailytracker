@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker_daily_tasker/controllers/data.dart';
+
 import 'package:habit_tracker_daily_tasker/routes.dart';
 import 'package:habit_tracker_daily_tasker/services/activity.dart';
+import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:habit_tracker_daily_tasker/services/task.dart';
+
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -16,6 +20,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ActivityService>(
           create: (_) => ActivityService(),
+        ),
+        ChangeNotifierProvider<DataService>(
+          create: (_) => DataService(),
         ),
       ],
       child: MaterialApp(

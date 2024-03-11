@@ -7,6 +7,8 @@ import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/data.dart';
+
 class DraggableTaskList extends StatefulWidget {
   const DraggableTaskList({
     Key? key,
@@ -32,8 +34,11 @@ class _DraggableTaskListState extends State<DraggableTaskList> {
   }
 
   Future<void> _fetchTasks() async {
-    final taskService = Provider.of<TaskService>(context, listen: false);
-    final fetchedTasks = taskService.getAllTasks();
+    final dataService = Provider.of<DataService>(context, listen: false);
+    final day = dataService.getSelectedDay();
+
+    final fetchedTasks = dataService.getAllTasks(day);
+
     setState(() {
       tasks = fetchedTasks;
       print(

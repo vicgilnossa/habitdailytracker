@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:habit_tracker_daily_tasker/services/task.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 
+import '../../services/data.dart';
+
 class CreateTaskDialog extends StatefulWidget {
   const CreateTaskDialog({Key? key}) : super(key: key);
 
@@ -96,9 +98,14 @@ class _CreateTaskDialogState extends State<CreateTaskDialog> {
                 onPressed: _isButtonEnabled
                     ? () {
                         taskService.createTask(_textEditingController.text);
+                        final dataService =
+                            Provider.of<DataService>(context, listen: false);
+                        final internalIndex = dataService.getIndex();
 
                         print(
                             'Texto ingresado: ${_textEditingController.text}');
+                        print(
+                            'El Index actual en este punto es: $internalIndex');
                         Navigator.pop(context);
                       }
                     : null,

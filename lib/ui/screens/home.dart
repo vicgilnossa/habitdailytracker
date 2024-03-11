@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:habit_tracker_daily_tasker/models/models.dart';
 import 'package:habit_tracker_daily_tasker/routes.dart';
+import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:habit_tracker_daily_tasker/services/services.dart';
 import 'package:habit_tracker_daily_tasker/ui/dialogs/dialogs.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: _HeaderBar(),
                 ),
-                DateCarousel(weeklyDates: weeklyDates),
+                const DateCarousel(),
                 _ActivityPannel(
                   hasActivity: hasActivity,
                 ),
@@ -135,6 +136,7 @@ class _ShowTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskService = Provider.of<TaskService>(context);
+    final dataService = Provider.of<DataService>(context);
 
     final bool hasCompletedTask = taskService.getAllCompletedTasks().isNotEmpty;
 
