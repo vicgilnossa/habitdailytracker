@@ -35,9 +35,9 @@ class _DraggableTaskListState extends State<DraggableTaskList> {
 
   Future<void> _fetchTasks() async {
     final dataService = Provider.of<DataService>(context, listen: false);
-    final day = dataService.getSelectedDay();
+    final index = dataService.getIndex();
 
-    final fetchedTasks = dataService.getAllTasks(day);
+    final fetchedTasks = dataService.getAllTasks(index);
 
     setState(() {
       tasks = fetchedTasks;

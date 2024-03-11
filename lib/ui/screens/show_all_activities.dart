@@ -13,8 +13,9 @@ class ShowAllActivitiesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activityService = Provider.of<ActivityService>(context);
-    final List<Activity> activities = activityService.getAllActivities();
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
+    final List<Activity> activities = dataService.getAllActivities(index);
 
     return Scaffold(
         body: SizedBox(

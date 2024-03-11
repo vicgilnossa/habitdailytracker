@@ -27,7 +27,8 @@ class _StaticTaskCardState extends State<StaticTaskCard> {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Slidable(
@@ -39,7 +40,7 @@ class _StaticTaskCardState extends State<StaticTaskCard> {
             onPressed: (context) {},
             child: CustomCircleButton(
               onPressed: () {
-                taskService.deleteTask(widget.task.id);
+                dataService.deleteTask(index, widget.task.id);
               },
             ),
           ),
@@ -70,7 +71,8 @@ class _StaticTaskCardState extends State<StaticTaskCard> {
                       isSelected = !isSelected;
                     });
                     await Future.delayed(Duration(seconds: 1));
-                    taskService.completeTask(widget.task, widget.task.id);
+                    dataService.completeTask(
+                        index, widget.task, widget.task.id);
                     setState(() {
                       isSelected = false;
                     });

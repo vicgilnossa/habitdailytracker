@@ -73,9 +73,10 @@ class _DraggableTaskCardState extends State<DraggableTaskCard> {
             onPressed: (context) {},
             child: CustomCircleButton(
                 onPressed: () {
-                  final taskService =
-                      Provider.of<TaskService>(context, listen: false);
-                  taskService.deleteTask(widget.data.id);
+                  final dataService =
+                      Provider.of<DataService>(context, listen: false);
+                  final index = dataService.getIndex();
+                  dataService.deleteTask(index, widget.data.id);
                   widget.updateTasksAfterDelete();
                 },
                 content: const Icon(Ionicons.close)),
@@ -92,13 +93,16 @@ class _DraggableTaskCardState extends State<DraggableTaskCard> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () async {
-                        final taskService =
-                            Provider.of<TaskService>(context, listen: false);
+                        final dataService =
+                            Provider.of<DataService>(context, listen: false);
+                        final index = dataService.getIndex();
                         setState(() {
                           isSelected = !isSelected;
                         });
+
                         await Future.delayed(const Duration(seconds: 1));
-                        taskService.completeTask(widget.data, widget.data.id);
+                        dataService.completeTask(
+                            index, widget.data, widget.data.id);
                         widget.updateTasksAfterDelete();
                         setState(() {
                           isSelected = false;

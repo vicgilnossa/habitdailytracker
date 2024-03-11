@@ -18,7 +18,7 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activityService = Provider.of<ActivityService>(context);
+    final dataService = Provider.of<DataService>(context);
     final Color color = activity.containerColor;
     return GestureDetector(
       onTap: () {
@@ -59,7 +59,8 @@ class ActivityCard extends StatelessWidget {
                   height: 30,
                   content: const Icon(Ionicons.trash, size: 20),
                   onPressed: () {
-                    activityService.deleteActivity(activity.id);
+                    final index = dataService.getIndex();
+                    dataService.deleteActivity(index, activity.id);
                   }),
               const SizedBox(
                 width: 10,

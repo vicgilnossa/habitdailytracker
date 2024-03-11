@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:provider/provider.dart';
 
 import 'package:habit_tracker_daily_tasker/models/models.dart';
-import 'package:habit_tracker_daily_tasker/services/services.dart';
+
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 
 class CompletedTaskCard extends StatefulWidget {
@@ -24,7 +25,8 @@ class _CompletedTaskCardState extends State<CompletedTaskCard> {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
@@ -51,7 +53,8 @@ class _CompletedTaskCardState extends State<CompletedTaskCard> {
                     isSelected = !isSelected;
                   });
                   await Future.delayed(Duration(seconds: 1));
-                  taskService.deCompleteTask(widget.task, widget.task.id);
+                  dataService.deCompleteTask(
+                      index, widget.task, widget.task.id);
                   setState(() {
                     isSelected = true;
                   });

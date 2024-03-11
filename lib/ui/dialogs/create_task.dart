@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
-
-import 'package:habit_tracker_daily_tasker/services/task.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
+
+import 'package:provider/provider.dart';
 
 import '../../services/data.dart';
 
@@ -38,7 +37,6 @@ class _CreateTaskDialogState extends State<CreateTaskDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: SizedBox(
@@ -97,15 +95,14 @@ class _CreateTaskDialogState extends State<CreateTaskDialog> {
                 ),
                 onPressed: _isButtonEnabled
                     ? () {
-                        taskService.createTask(_textEditingController.text);
                         final dataService =
                             Provider.of<DataService>(context, listen: false);
-                        final internalIndex = dataService.getIndex();
+                        final index = dataService.getIndex();
+                        dataService.addTask(index, _textEditingController.text);
 
                         print(
                             'Texto ingresado: ${_textEditingController.text}');
-                        print(
-                            'El Index actual en este punto es: $internalIndex');
+                        print('El Index actual en este punto es: $index');
                         Navigator.pop(context);
                       }
                     : null,

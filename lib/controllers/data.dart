@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
+
 import 'package:habit_tracker_daily_tasker/models/models.dart';
 
+//lISTA INTERNA
 class DataController {
   final List<Data> dailyData = [
     Data(
       name: "Lun",
       number: "11",
-      id: 1,
-      activities: [],
+      id: 0,
+      activities: [
+        Activity(
+            id: "1", name: "1. Actividad Lunes", containerColor: Colors.white)
+      ],
       tasks: [
         Task(id: "1", name: "Tarea lunes", key: ValueKey(1)),
       ],
       completedTasks: [],
     ),
-    Data(name: "Mar", number: "12", id: 2, activities: [], tasks: [
+    Data(name: "Mar", number: "12", id: 1, activities: [], tasks: [
       Task(
         id: "1",
         name: "Tarea martes",
         key: ValueKey(1),
       ),
-      Task(id: "2", name: "Segunda del martes", key: ValueKey(2))
     ], completedTasks: []),
     Data(
       name: "Miér",
       number: "13",
-      id: 3,
+      id: 2,
       activities: [],
       tasks: [],
       completedTasks: [],
@@ -32,45 +36,36 @@ class DataController {
     Data(
         name: "Jue",
         number: "14",
-        id: 4,
+        id: 3,
         activities: [],
         tasks: [],
         completedTasks: []),
     Data(
         name: "Vier",
         number: "15",
-        id: 5,
+        id: 4,
         activities: [],
         tasks: [],
         completedTasks: []),
     Data(
         name: "Sáb",
         number: "16",
-        id: 6,
+        id: 5,
         activities: [],
         tasks: [],
         completedTasks: []),
     Data(
         name: "Dom",
         number: "17",
-        id: 7,
+        id: 6,
         activities: [],
         tasks: [],
         completedTasks: [])
   ];
 
-  //Variables para determinar el día
-  String _selectedDay = "Lun";
+  //MÉTODO PARA GUARDAR Y REUTILIZAR EL INDEX, ES DECIR, EL DÍA
 
-  void setSelectedDay(String day) {
-    _selectedDay = day;
-  }
-
-  String getSelectedDay() {
-    return _selectedDay;
-  }
-
-  int _index = 1;
+  int _index = 0;
 
   void setIndex(int index) {
     _index = index;
@@ -80,25 +75,70 @@ class DataController {
     return _index;
   }
 
-  // Métodos para añadir datos
+//CRUD DE TAREAS
+  //create
+  int counter = 2;
+  int keyCounter = 2;
 
   Task addTask(
     int index,
     String taskName,
   ) {
-    int counter = 1;
     final task = Task(
       id: counter.toString(),
       name: taskName,
-      key: ValueKey(counter),
+      key: ValueKey(keyCounter),
     );
 
     dailyData[index].tasks.add(task);
     counter++;
+    keyCounter++;
 
     return task;
   }
 
+  //read
+  List<Task> getAllTasks(int index) {
+    return List<Task>.from(dailyData[index].tasks);
+  }
+
+  List<Task> getAllCompletedTasks(int index) {
+    return List<Task>.from(dailyData[index].completedTasks);
+  }
+
+  //update
+  Task updateTask(Task updatedTask, int index) {
+    final internalIndex =
+        dailyData[index].tasks.indexWhere((task) => task.id == updatedTask.id);
+    if (internalIndex != -1) {
+      dailyData[index].tasks[internalIndex] = updatedTask;
+      return updatedTask;
+    } else {
+      throw Exception('Tarea no encontrada');
+    }
+  }
+
+  Future<Task> completeTask(int index, Task task, String taskId) async {
+    dailyData[index].completedTasks.add(task);
+    dailyData[index].tasks.removeWhere((task) => task.id == taskId);
+
+    return task;
+  }
+
+  Future<Task> deCompleteTask(int index, Task task, String taskId) async {
+    dailyData[index].tasks.add(task);
+    dailyData[index].completedTasks.removeWhere((task) => task.id == taskId);
+
+    return task;
+  }
+
+  //delete
+  void deleteTask(int index, String taskId) {
+    dailyData[index].tasks.removeWhere((task) => task.id == taskId);
+  }
+
+//CRUD DE ACTIVIDADES
+  //create
   Activity addActivity(
     int index,
     String activityName,
@@ -116,56 +156,36 @@ class DataController {
     return activity;
   }
 
-  List<Data> getData() {
-    return List<Data>.from(dailyData);
+  //read
+  List<Activity> getAllActivities(int index) {
+    return List<Activity>.from(dailyData[index].activities);
   }
 
-  List<Task> getAllTasks(String day) {
-    switch (day) {
-      case "Lun":
-        return List<Task>.from(dailyData[0].tasks);
-      case "Mar":
-        return List<Task>.from(dailyData[1].tasks);
-      case "Miér":
-        return List<Task>.from(dailyData[2].tasks);
-      case "Jue":
-        return List<Task>.from(dailyData[3].tasks);
-      case "Vier":
-        return List<Task>.from(dailyData[4].tasks);
-      case "Sáb":
-        return List<Task>.from(dailyData[5].tasks);
-      case "Dom":
-        return List<Task>.from(dailyData[6].tasks);
-      default:
-        throw Exception("Día no válido: $day");
+  //update
+  Activity updateActivity(
+    int index,
+    Activity updatedActivity,
+  ) {
+    final internalIndex = dailyData[index]
+        .activities
+        .indexWhere((activity) => activity.id == updatedActivity.id);
+    if (internalIndex != -1) {
+      dailyData[index].activities[internalIndex] = updatedActivity;
+      return updatedActivity;
+    } else {
+      throw Exception('Tarea no encontrada');
     }
   }
 
-  List<Task> getAllActivities(String day) {
-    switch (day) {
-      case "Lunes":
-        return List<Task>.from(dailyData[0].activities);
-      case "Martes":
-        return List<Task>.from(dailyData[1].activities);
-      case "Miércoles":
-        return List<Task>.from(dailyData[2].activities);
-      case "Jueves":
-        return List<Task>.from(dailyData[3].activities);
-      case "Viernes":
-        return List<Task>.from(dailyData[4].activities);
-      case "Sábado":
-        return List<Task>.from(dailyData[5].activities);
-      case "Domingo":
-        return List<Task>.from(dailyData[6].activities);
-      default:
-        throw Exception("Día no válido: $day");
-    }
+  //delete
+  void deleteActivity(int index, String activityId) {
+    dailyData[index]
+        .activities
+        .removeWhere((activity) => activity.id == activityId);
   }
 
-  Future<Task> completeTask(Task task, String taskId, int index) async {
-    dailyData[index].completedTasks.add(task);
-    dailyData[index].tasks.removeWhere((task) => task.id == taskId);
-
-    return task;
+//TRAER TODA LA DATA
+  List<Data> getAllData() {
+    return dailyData;
   }
 }

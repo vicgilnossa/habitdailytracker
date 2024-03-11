@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker_daily_tasker/services/data.dart';
 
 import 'package:habit_tracker_daily_tasker/services/services.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
@@ -45,7 +46,7 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final activityService = Provider.of<ActivityService>(context);
+    final dataService = Provider.of<DataService>(context);
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: SizedBox(
@@ -108,7 +109,8 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
                 ),
                 onPressed: _isButtonEnabled
                     ? () {
-                        activityService.createActivity(
+                        final index = dataService.getIndex();
+                        dataService.addActivity(index,
                             _textEditingController.text, _containerColor);
                         print(
                             'Texto ingresado: ${_textEditingController.text}');

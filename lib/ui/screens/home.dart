@@ -15,11 +15,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
-    final activityService = Provider.of<ActivityService>(context);
-    final tasks = taskService.getAllTasks();
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
+    final tasks = dataService.getAllTasks(index);
     final hasTask = tasks.isNotEmpty;
-    final activities = activityService.getAllActivities();
+
+    final activities = dataService.getAllActivities(index);
     final hasActivity = activities.isNotEmpty;
 
     return SafeArea(
@@ -99,7 +100,8 @@ class _AddTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
       child: Column(
@@ -121,7 +123,7 @@ class _AddTask extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          CompletedTaskList(task: taskService.getAllCompletedTasks())
+          CompletedTaskList(task: dataService.getAllCompletedTasks(index))
         ],
       ),
     );
@@ -135,10 +137,11 @@ class _ShowTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskService = Provider.of<TaskService>(context);
-    final dataService = Provider.of<DataService>(context);
+    final dataService = Provider.of<DataService>(context, listen: false);
+    final index = dataService.getIndex();
 
-    final bool hasCompletedTask = taskService.getAllCompletedTasks().isNotEmpty;
+    final bool hasCompletedTask =
+        dataService.getAllCompletedTasks(index).isNotEmpty;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 50, 20, 10),
@@ -161,7 +164,7 @@ class _ShowTask extends StatelessWidget {
             height: 50,
           ),
           hasCompletedTask
-              ? CompletedTaskList(task: taskService.getAllCompletedTasks())
+              ? CompletedTaskList(task: dataService.getAllCompletedTasks(index))
               : Container(
                   child: Column(
                     children: [
@@ -208,8 +211,9 @@ class _ShowActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activityService = Provider.of<ActivityService>(context);
-    final List<Activity> activities = activityService.getAllActivities();
+    final dataService = Provider.of<DataService>(context);
+    final index = dataService.getIndex();
+    final List<Activity> activities = dataService.getAllActivities(index);
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
       child: Column(

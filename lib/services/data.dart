@@ -5,17 +5,7 @@ import 'package:habit_tracker_daily_tasker/models/models.dart';
 class DataService extends ChangeNotifier {
   final DataController _dailyDataController = DataController();
 
-  // Métodos para establecer index y día
-  void setSelectedDay(String day) {
-    notifyListeners();
-    _dailyDataController.setSelectedDay(day);
-  }
-
-  String getSelectedDay() {
-    notifyListeners();
-    return _dailyDataController.getSelectedDay();
-  }
-
+//MÉTODO PARA GUARDAR Y REUTILIZAR EL INDEX, ES DECIR, EL DÍA
   void setIndex(int index) {
     notifyListeners();
     _dailyDataController.setIndex(index);
@@ -26,7 +16,8 @@ class DataService extends ChangeNotifier {
     return _dailyDataController.getIndex();
   }
 
-  // Métodos para añadir datos
+//CRUD DE TAREAS
+  //create
   Task addTask(
     int index,
     String taskName,
@@ -35,6 +26,41 @@ class DataService extends ChangeNotifier {
     return _dailyDataController.addTask(index, taskName);
   }
 
+  //read
+  List<Task> getAllTasks(int index) {
+    notifyListeners();
+    return _dailyDataController.getAllTasks(index);
+  }
+
+  List<Task> getAllCompletedTasks(int index) {
+    notifyListeners();
+    return _dailyDataController.getAllCompletedTasks(index);
+  }
+
+  //update
+  Task updateTask(Task updatedTask, int index) {
+    notifyListeners();
+    return _dailyDataController.updateTask(updatedTask, index);
+  }
+
+  void completeTask(int index, Task task, String taskId) {
+    _dailyDataController.completeTask(index, task, taskId);
+    notifyListeners();
+  }
+
+  void deCompleteTask(int index, Task task, String taskId) {
+    _dailyDataController.deCompleteTask(index, task, taskId);
+    notifyListeners();
+  }
+
+  //delete
+  void deleteTask(int index, String taskId) {
+    _dailyDataController.deleteTask(index, taskId);
+    notifyListeners();
+  }
+
+//CRUD DE ACTIVIDADES
+  //create
   Activity addActivity(
     int index,
     String activityName,
@@ -45,26 +71,30 @@ class DataService extends ChangeNotifier {
         index, activityName, containerColor);
   }
 
-  // Método para obtener toda la data
+  //read
+  List<Activity> getAllActivities(int index) {
+    notifyListeners();
+    return _dailyDataController.getAllActivities(index);
+  }
+
+  //update
+  Activity updateActivity(
+    int index,
+    Activity updatedActivity,
+  ) {
+    notifyListeners();
+    return _dailyDataController.updateActivity(index, updatedActivity);
+  }
+
+  //delete
+  void deleteActivity(int index, String activityId) {
+    _dailyDataController.deleteActivity(index, activityId);
+    notifyListeners();
+  }
+
+//TRAER TODA LA DATA
   List<Data> getAllData() {
     notifyListeners();
-    return _dailyDataController.getData();
-  }
-
-  // Método para obtener todas las tareas del día
-  List<Task> getAllTasks(String day) {
-    notifyListeners();
-    return _dailyDataController.getAllTasks(day);
-  }
-
-  // Método para obtener todas las tareas del día
-  List<Task> getAllActivities(String day) {
-    notifyListeners();
-    return _dailyDataController.getAllActivities(day);
-  }
-
-  void completeTask(Task task, String taskId, int index) {
-    _dailyDataController.completeTask(task, taskId, index);
-    notifyListeners();
+    return _dailyDataController.getAllData();
   }
 }

@@ -45,17 +45,17 @@ class _DateCarouselState extends State<DateCarousel> {
             onSelect: () {
               setState(() {
                 _selectedIndex = index;
-                final ourSelectedDay = dailyData.name;
+
                 final ourIndex = dailyData.id;
-                print("El día en el index es $ourSelectedDay");
+
                 print("El index en el index es $ourIndex");
                 final dataService =
                     Provider.of<DataService>(context, listen: false);
-                dataService.setSelectedDay(ourSelectedDay);
+
                 dataService.setIndex(ourIndex);
-                final internalDay = dataService.getSelectedDay();
+
                 final internalIndex = dataService.getIndex();
-                print("El día interno es $internalDay");
+
                 print("El index interno es $internalIndex");
               });
             },
