@@ -113,7 +113,9 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
                         dataService.addActivity(index,
                             _textEditingController.text, _containerColor);
                         print(
-                            'Texto ingresado: ${_textEditingController.text}');
+                            'Nombre de la actividad: ${_textEditingController.text}');
+                        print('Index traido de la data es: $index');
+                       
 
                         Navigator.pop(context);
                       }

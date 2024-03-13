@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -31,37 +29,43 @@ class _DateCarouselState extends State<DateCarousel> {
           initialPage: _selectedIndex,
           viewportFraction: 0.2,
           height: 79,
-          onPageChanged: (index, reason) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
+          onPageChanged: _onPageChanged,
         ),
-        itemBuilder: (context, index, realIndex) {
-          final dailyData = dailyDatas[index];
-          return DateCard(
-            dailyData: dailyData,
-            isSelected: index == _selectedIndex,
-            onSelect: () {
-              setState(() {
-                _selectedIndex = index;
-
-                final ourIndex = dailyData.id;
-
-                print("El index en el index es $ourIndex");
-                final dataService =
-                    Provider.of<DataService>(context, listen: false);
-
-                dataService.setIndex(ourIndex);
-
-                final internalIndex = dataService.getIndex();
-
-                print("El index interno es $internalIndex");
-              });
-            },
-          );
-        },
+        itemBuilder: _buildDateCard,
       ),
     );
+  }
+
+  void _onPageChanged(int index, CarouselPageChangedReason reason) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    _handleSelection(index);
+  }
+
+  Widget _buildDateCard(BuildContext context, int index, int realIndex) {
+    final dailyDataService = Provider.of<DataService>(context, listen: false);
+    final dailyData = dailyDataService.getAllData()[index];
+    return DateCard(
+      dailyData: dailyData,
+      isSelected: index == _selectedIndex,
+      onSelect: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+        _handleSelection(index);
+      },
+    );
+  }
+
+  void _handleSelection(int index) {
+    final dailyDataService = Provider.of<DataService>(context, listen: false);
+    final dailyData = dailyDataService.getAllData()[index];
+    final ourIndex = dailyData.id;
+    print("El index en el index es $ourIndex");
+    final dataService = Provider.of<DataService>(context, listen: false);
+    dataService.setIndex(ourIndex);
+    final internalIndex = dataService.getIndex();
+    print("El index interno es $internalIndex");
   }
 }

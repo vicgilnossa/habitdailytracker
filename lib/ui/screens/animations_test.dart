@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart' hide ReorderableList;
+import 'package:habit_tracker_daily_tasker/models/models.dart';
 
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
+import 'package:habit_tracker_daily_tasker/ui/widgets/task_card.dart';
+import 'package:habit_tracker_daily_tasker/ui/widgets/task_list.dart';
 
 import 'package:lottie/lottie.dart';
 
-class AnimationTestScreen extends StatelessWidget {
+class Tareas {
+  final String name;
+
+  Tareas({required this.name});
+}
+
+class AnimationTestScreen extends StatefulWidget {
   const AnimationTestScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AnimationTestScreen> createState() => _AnimationTestScreenState();
+}
+
+class _AnimationTestScreenState extends State<AnimationTestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +38,7 @@ class AnimationTestScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              LottieBuilder.network(
-                  "https://lottie.host/92ce2f3a-1a4b-4387-ba29-56a5bee18f62/D4TiY5Q4Fv.json"),
+             
             ]),
           ),
         ),

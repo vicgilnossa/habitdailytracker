@@ -5,7 +5,7 @@ import 'package:habit_tracker_daily_tasker/models/models.dart';
 class DataService extends ChangeNotifier {
   final DataController _dailyDataController = DataController();
 
-//MÉTODO PARA GUARDAR Y REUTILIZAR EL INDEX, ES DECIR, EL DÍA
+//VARIABLES REUTILIZABLES
   void setIndex(int index) {
     notifyListeners();
     _dailyDataController.setIndex(index);
@@ -14,6 +14,26 @@ class DataService extends ChangeNotifier {
   int getIndex() {
     notifyListeners();
     return _dailyDataController.getIndex();
+  }
+
+  void setNewLength(int newLength) {
+    notifyListeners();
+    _dailyDataController.setNewLength(newLength);
+  }
+
+  int getNewLength() {
+    notifyListeners();
+    return _dailyDataController.getNewLength();
+  }
+
+  void setOldLength(int oldLength) {
+    notifyListeners();
+    _dailyDataController.setOldLength(oldLength);
+  }
+
+  int getOldLength() {
+    notifyListeners();
+    return _dailyDataController.getOldLength();
   }
 
 //CRUD DE TAREAS

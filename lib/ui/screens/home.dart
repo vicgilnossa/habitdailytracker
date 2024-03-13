@@ -137,7 +137,7 @@ class _ShowTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataService = Provider.of<DataService>(context, listen: false);
+    final dataService = Provider.of<DataService>(context);
     final index = dataService.getIndex();
 
     final bool hasCompletedTask =
@@ -157,8 +157,9 @@ class _ShowTask extends StatelessWidget {
               ),
             ),
           ),
-          DraggableTaskList(
-            key: UniqueKey(),
+          TaskList(
+            key:
+                UniqueKey(), //Este Uniquekey es vital en todo reorderablelist para hacer que la lista se actualice en tiempo real
           ),
           const SizedBox(
             height: 50,

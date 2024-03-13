@@ -11,42 +11,78 @@ class DataController {
       id: 0,
       activities: [
         Activity(
-            id: "1", name: "1. Actividad Lunes", containerColor: Colors.white)
+            id: "1", name: "1. Actividad Lunes", containerColor: Colors.white),
       ],
       tasks: [
-        Task(id: "1", name: "Tarea lunes", key: ValueKey(1)),
+        Task(
+          id: "1",
+          name: "Tarea lunes: uno",
+        ),
+        Task(
+          id: "2",
+          name: "Tarea lunes: dos",
+        ),
+        Task(
+          id: "3",
+          name: "Tarea lunes: tres",
+        ),
+        Task(
+          id: "4",
+          name: "Tarea lunes: cuatro",
+        ),
       ],
-      completedTasks: [],
+      completedTasks: [Task(id: "12", name: "Yo que se")],
     ),
-    Data(name: "Mar", number: "12", id: 1, activities: [], tasks: [
+    Data(name: "Mar", number: "12", id: 1, activities: [
+      Activity(
+          id: "1",
+          name: "1. Actividad martes",
+          containerColor: const Color.fromARGB(255, 211, 46, 46)),
+    ], tasks: [
       Task(
         id: "1",
-        name: "Tarea martes",
-        key: ValueKey(1),
+        name: "Tarea martes: uno",
       ),
-    ], completedTasks: []),
+      Task(
+        id: "2",
+        name: "Tarea martes: dos",
+      ),
+      Task(
+        id: "3",
+        name: "Tarea martes: tres",
+      ),
+      Task(
+        id: "4",
+        name: "Tarea martes: cuatro",
+      ),
+    ], completedTasks: [
+      Task(id: "13", name: "Yo si se")
+    ]),
     Data(
       name: "Miér",
       number: "13",
       id: 2,
-      activities: [],
+      activities: [
+        Activity(
+            id: "1",
+            name: "1. Actividad Miércoles",
+            containerColor: Color.fromARGB(255, 243, 255, 68)),
+      ],
       tasks: [],
       completedTasks: [],
     ),
-    Data(
-        name: "Jue",
-        number: "14",
-        id: 3,
-        activities: [],
-        tasks: [],
-        completedTasks: []),
-    Data(
-        name: "Vier",
-        number: "15",
-        id: 4,
-        activities: [],
-        tasks: [],
-        completedTasks: []),
+    Data(name: "Jue", number: "14", id: 3, activities: [
+      Activity(
+          id: "1",
+          name: "1. Actividad Jueves",
+          containerColor: Color.fromARGB(255, 104, 114, 255)),
+    ], tasks: [], completedTasks: []),
+    Data(name: "Vier", number: "15", id: 4, activities: [
+      Activity(
+          id: "1",
+          name: "1. Actividad viernes",
+          containerColor: Color.fromARGB(255, 255, 61, 197)),
+    ], tasks: [], completedTasks: []),
     Data(
         name: "Sáb",
         number: "16",
@@ -63,8 +99,8 @@ class DataController {
         completedTasks: [])
   ];
 
-  //MÉTODO PARA GUARDAR Y REUTILIZAR EL INDEX, ES DECIR, EL DÍA
-
+//VARIABLES REUTILIZABLES
+  //Determinar el día
   int _index = 0;
 
   void setIndex(int index) {
@@ -75,24 +111,47 @@ class DataController {
     return _index;
   }
 
+  //Tamaños de la lista
+  int _newLength = 1;
+
+  void setNewLength(int newLength) {
+    _newLength = newLength;
+  }
+
+  int getNewLength() {
+    return _newLength;
+  }
+
+  int _oldLength = 1;
+
+  void setOldLength(int oldLength) {
+    _oldLength = oldLength;
+  }
+
+  int getOldLength() {
+    return _oldLength;
+  }
+
 //CRUD DE TAREAS
   //create
-  int counter = 2;
-  int keyCounter = 2;
-
+  int taskCounter = 2;
   Task addTask(
     int index,
     String taskName,
   ) {
     final task = Task(
-      id: counter.toString(),
+      id: taskCounter.toString(),
       name: taskName,
-      key: ValueKey(keyCounter),
     );
-
+    final oldLength = dailyData[index].tasks.length;
+    setOldLength(oldLength);
     dailyData[index].tasks.add(task);
-    counter++;
-    keyCounter++;
+    final newLength = dailyData[index].tasks.length;
+    setNewLength(newLength);
+    taskCounter++;
+    print("tarea agregada exitosamente");
+    print("El id de esta nueva tarea llamada ${task.name} es ${task.id}");
+    print("El id de la próxima tarea es $taskCounter");
 
     return task;
   }
@@ -139,12 +198,12 @@ class DataController {
 
 //CRUD DE ACTIVIDADES
   //create
+  int counter = 2;
   Activity addActivity(
     int index,
     String activityName,
     Color containerColor,
   ) {
-    int counter = 1;
     final activity = Activity(
         id: counter.toString(),
         name: activityName,
@@ -152,6 +211,8 @@ class DataController {
 
     dailyData[index].activities.add(activity);
     counter++;
+    final newActivityId = activity.id;
+    print('el id de la nueva tarea es: $newActivityId');
 
     return activity;
   }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ionicons/ionicons.dart';
 
 class ColorCarousel extends StatefulWidget {
-  final Function(Color)
-      onColorSelected; // Propiedad para manejar el color seleccionado
+  final Function(Color) onColorSelected;
 
   const ColorCarousel({Key? key, required this.onColorSelected})
       : super(key: key);
@@ -50,23 +48,13 @@ class _ColorCarouselState extends State<ColorCarousel> {
           options: CarouselOptions(
             viewportFraction: 0.3,
             enlargeCenterPage: true,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _selectedIndex = index;
-              });
-              widget.onColorSelected(colors[
-                  index]); // Llamar a la función de devolución de llamada con el color seleccionado
-            },
+            onPageChanged: _handlePageChanged,
           ),
           itemBuilder: (context, index, realIndex) {
             final color = colors[index];
             return GestureDetector(
               onTap: () {
-                setState(() {
-                  _selectedIndex = index;
-                });
-                widget.onColorSelected(
-                    color); // Llamar a la función de devolución de llamada con el color seleccionado
+                _handleColorSelected(index, color);
               },
               child: Container(
                 width: 60,
@@ -74,19 +62,33 @@ class _ColorCarouselState extends State<ColorCarousel> {
                 margin: EdgeInsets.symmetric(horizontal: 5),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  border: Border.all(
+                    color: _selectedIndex == index
+                        ? const Color.fromARGB(255, 0, 0, 0)
+                        : Colors.transparent,
+                    width: 2,
+                  ),
                   color: color,
                 ),
-                child: _selectedIndex == index
-                    ? Icon(
-                        Ionicons.checkmark,
-                        color: Colors.white,
-                      )
-                    : SizedBox(),
               ),
             );
           },
         ),
       ],
     );
+  }
+
+  void _handlePageChanged(int index, CarouselPageChangedReason reason) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    widget.onColorSelected(colors[index]);
+  }
+
+  void _handleColorSelected(int index, Color color) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    widget.onColorSelected(color);
   }
 }

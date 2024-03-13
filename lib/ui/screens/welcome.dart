@@ -72,53 +72,65 @@ class _AnimatedEmojiList extends StatefulWidget {
 class _AnimatedEmojiListState extends State<_AnimatedEmojiList> {
   int _selectedIndex = -1;
 
+  void _handleEmojiTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 535,
       child: CircleList(
-          outerRadius: 300,
-          innerRadius: 120,
-          origin: const Offset(-100, 30),
-          centerWidget: _selectedIndex == -1
-              ? Container(
-                  width: 241,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1),
-                    borderRadius: BorderRadius.circular(4),
-                    color: const Color(0xffFF8E8E),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(3, 3),
-                        blurRadius: 0.8,
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "Descubre tu mensaje",
-                      style: TextStyles.h3,
+        outerRadius: 300,
+        innerRadius: 120,
+        origin: const Offset(-100, 30),
+        centerWidget: _selectedIndex == -1
+            ? Container(
+                width: 241,
+                height: 64,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 1),
+                  borderRadius: BorderRadius.circular(4),
+                  color: const Color(0xffFF8E8E),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(3, 3),
+                      blurRadius: 0.8,
+                      spreadRadius: 0,
                     ),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "Descubre tu mensaje",
+                    style: TextStyles.h3,
                   ),
-                )
-              : _MessageBanner(widget: widget, selectedIndex: _selectedIndex),
-          children: widget.emojis.map((emoji) {
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedIndex = widget.emojis.indexOf(emoji);
-                });
-              },
-              child: _AnimatedEmoji(
-                emoji: emoji,
-                isSelected: widget.emojis.indexOf(emoji) == _selectedIndex,
+                ),
+              )
+            : _MessageBanner(
+                widget: widget,
+                selectedIndex: _selectedIndex,
               ),
-            );
-          }).toList()),
+        children: widget.emojis
+            .asMap()
+            .entries
+            .map(
+              (entry) => GestureDetector(
+                onTap: () {
+                  _handleEmojiTap(entry.key);
+                },
+                child: _AnimatedEmoji(
+                  emoji: entry.value,
+                  isSelected: entry.key == _selectedIndex,
+                ),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

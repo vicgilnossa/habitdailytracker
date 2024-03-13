@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:provider/provider.dart';
-
 import 'package:habit_tracker_daily_tasker/models/models.dart';
-
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 
 class CompletedTaskCard extends StatefulWidget {
@@ -30,7 +27,7 @@ class _CompletedTaskCardState extends State<CompletedTaskCard> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () => _onTapTask(index, dataService),
         child: Container(
           constraints: BoxConstraints(
             minHeight: 50,
@@ -48,17 +45,7 @@ class _CompletedTaskCardState extends State<CompletedTaskCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () async {
-                  setState(() {
-                    isSelected = !isSelected;
-                  });
-                  await Future.delayed(Duration(seconds: 1));
-                  dataService.deCompleteTask(
-                      index, widget.task, widget.task.id);
-                  setState(() {
-                    isSelected = true;
-                  });
-                },
+                onTap: () => _onTapTask(index, dataService),
                 child: Container(
                   width: 28,
                   height: 28,
@@ -74,23 +61,39 @@ class _CompletedTaskCardState extends State<CompletedTaskCard> {
               Container(
                 width: 270,
                 child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 10, top: 5, bottom: 20),
-                    child: isSelected
-                        ? Text(
-                            widget.task.name,
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          )
-                        : Text(widget.task.name, style: TextStyles.p)),
+                  padding: const EdgeInsets.only(left: 10, top: 5, bottom: 20),
+                  child: isSelected
+                      ? Text(
+                          widget.task.name,
+                          style: GoogleFonts.inter(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        )
+                      : Text(widget.task.name, style: TextStyles.p),
+                ),
               )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _onTapTask(int index, DataService dataService) async {
+    setState(() {
+      isSelected = !isSelected;
+    });
+    await _delayedTaskCompletion(index, dataService);
+    setState(() {
+      isSelected = true;
+    });
+  }
+
+  Future<void> _delayedTaskCompletion(
+      int index, DataService dataService) async {
+    await Future.delayed(const Duration(seconds: 1));
+    dataService.deCompleteTask(index, widget.task, widget.task.id);
   }
 }
