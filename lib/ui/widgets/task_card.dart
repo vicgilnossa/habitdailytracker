@@ -44,9 +44,7 @@ class _TaskCardState extends State<TaskCard> {
           ),
         ]),
         child: GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, Routes.animationTest);
-          },
+          onTap: () {},
           child: Container(
             constraints: BoxConstraints(
               minHeight: 50,

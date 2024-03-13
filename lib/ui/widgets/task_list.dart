@@ -37,13 +37,13 @@ class _TaskListState extends State<TaskList> {
     setState(() {
       tasks = fetchedTasks;
       print(
-          "El estado de la lista es ${tasks.map((task) => task.name).toList()}");
+          "El state de la lista es ${tasks.map((task) => task.name).toList()}");
     });
 
     final newLength = dataService.getNewLength();
     final oldLength = dataService.getOldLength();
     if (oldLength < newLength) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _scrollToIndex(_scrollController.position.maxScrollExtent -
             _previousScrollPosition);
       });

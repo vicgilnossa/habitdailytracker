@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart' hide ReorderableList;
-import 'package:habit_tracker_daily_tasker/models/models.dart';
 
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
-import 'package:habit_tracker_daily_tasker/ui/widgets/task_card.dart';
-import 'package:habit_tracker_daily_tasker/ui/widgets/task_list.dart';
-
-import 'package:lottie/lottie.dart';
 
 class Tareas {
   final String name;
@@ -38,7 +33,6 @@ class _AnimationTestScreenState extends State<AnimationTestScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
-             
             ]),
           ),
         ),
