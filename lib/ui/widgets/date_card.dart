@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:google_fonts/google_fonts.dart';
-
 import 'package:habit_tracker_daily_tasker/models/models.dart';
+
+import 'package:google_fonts/google_fonts.dart';
 
 class DateCard extends StatelessWidget {
   final Data dailyData;

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 class DateCarousel extends StatefulWidget {

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:habit_tracker_daily_tasker/services/data.dart';
-import 'package:provider/provider.dart';
+
 import 'package:habit_tracker_daily_tasker/models/models.dart';
+import 'package:habit_tracker_daily_tasker/services/data.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
+
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CompletedTaskCard extends StatefulWidget {
   final Task task;

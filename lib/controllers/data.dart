@@ -11,27 +11,37 @@ class DataController {
       id: 0,
       activities: [
         Activity(
-            id: "1", name: "1. Actividad Lunes", containerColor: Colors.white),
+            id: "1",
+            name: "1. Trabajo",
+            containerColor: const Color.fromARGB(255, 255, 127, 127)),
+        Activity(
+            id: "1",
+            name: "2. Gym",
+            containerColor: Color.fromARGB(255, 156, 255, 85)),
+        Activity(
+            id: "1",
+            name: "3. Leer",
+            containerColor: Color.fromARGB(255, 105, 145, 255)),
       ],
       tasks: [
         Task(
           id: "1",
-          name: "Tarea lunes: uno",
+          name: "Hacer la cama",
         ),
         Task(
           id: "2",
-          name: "Tarea lunes: dos",
+          name: "Reunión con cliente",
         ),
         Task(
           id: "3",
-          name: "Tarea lunes: tres",
+          name: "Recoger a los niños",
         ),
         Task(
           id: "4",
-          name: "Tarea lunes: cuatro",
+          name: "Arreglar tubería del baño",
         ),
       ],
-      completedTasks: [Task(id: "12", name: "Yo que se")],
+      completedTasks: [Task(id: "12", name: "Lavarme los dientes")],
     ),
     Data(name: "Mar", number: "12", id: 1, activities: [
       Activity(

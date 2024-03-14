@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:habit_tracker_daily_tasker/models/models.dart';
-import 'package:habit_tracker_daily_tasker/routes.dart';
 import 'package:habit_tracker_daily_tasker/services/services.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
+
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
