@@ -1,16 +1,23 @@
-# habit_tracker_daily_tasker
+# Habit Tracker & Daily Tasker
+## Descripción
+¡Bienvenido a Habit Tracker & Daily Tasker! Esta aplicación te ayuda a mantener un seguimiento de tus hábitos diarios y tareas pendientes de una manera fácil y eficiente. Con esta herramienta, podrás mejorar tu productividad, establecer rutinas saludables y alcanzar tus objetivos diarios.
 
-A new Flutter project.
+## Funcionalidades
+Seguimiento de Hábitos: Registra tus hábitos diarios y realiza un seguimiento de tu progreso a lo largo del tiempo.
+Gestión de Tareas: Organiza tus tareas pendientes, establece prioridades y marca las tareas completadas.
+Personalización Flexible: Adaptado a tus necesidades, permite personalizar tus hábitos y tareas con colores, etiquetas y más.
+Interfaz Intuitiva: Diseño limpio y fácil de usar, diseñado para una experiencia de usuario fluida y agradable.
+Notificaciones y Recordatorios: Recibe recordatorios y notificaciones para mantener tus hábitos y tareas en la vanguardia de tu mente.
+Capturas de Pantalla
+[Agrega aquí algunas capturas de pantalla de la aplicación para mostrar su apariencia y funcionalidades]
 
-## Getting Started
+## Instalación
+Clonar el Repositorio: git clone https://github.com/vicgilnossa/habithailytracker
+Instalar Dependencias: flutter pub get
+Ejecutar la Aplicación: flutter run
 
-This project is a starting point for a Flutter application.
+# Autor
+Desarrollado por Vicman.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Licencia
+Este proyecto está bajo la Licencia MIT.
