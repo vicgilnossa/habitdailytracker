@@ -24,7 +24,7 @@ Ejecutar la Aplicación: flutter run
 
 
 # Autor
-Desarrollado por Vicman basado en una plantilla desarrollada por https://www.capiproduct.com/ y adquirida a través de Envato Elements.
+Desarrollado por Vicman basado en una plantilla desarrollada por [Capi Product](https://www.capiproduct.com/) y adquirida a través de Envato Elements.
 
 # Licencia
 Este proyecto está bajo la Licencia MIT.
