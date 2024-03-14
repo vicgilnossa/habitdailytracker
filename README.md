@@ -9,12 +9,17 @@ Personalización Flexible: Adaptado a tus necesidades, permite personalizar tus 
 Interfaz Intuitiva: Diseño limpio y fácil de usar, diseñado para una experiencia de usuario fluida y agradable.
 Notificaciones y Recordatorios: Recibe recordatorios y notificaciones para mantener tus hábitos y tareas en la vanguardia de tu mente.
 Capturas de Pantalla
-[Agrega aquí algunas capturas de pantalla de la aplicación para mostrar su apariencia y funcionalidades]
+
 
 ## Instalación
 Clonar el Repositorio: git clone https://github.com/vicgilnossa/habithailytracker
 Instalar Dependencias: flutter pub get
 Ejecutar la Aplicación: flutter run
+![Screenshot_1710440769](https://github.com/vicgilnossa/habithailytracker/assets/91137238/954b1e09-8f67-46fa-bdca-0e2d9b3f5b83)
+![Screenshot_1710440817](https://github.com/vicgilnossa/habithailytracker/assets/91137238/8c1fe343-19df-4713-8ad9-0aa2133a1c16)
+![Screenshot_1710440884](https://github.com/vicgilnossa/habithailytracker/assets/91137238/b3a8ea9d-6e54-4d8a-bc49-5d75ae2a62dc)
+
+
 
 # Autor
 Desarrollado por Vicman.
