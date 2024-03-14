@@ -12,7 +12,7 @@ Seguimiento de Hábitos: Registra tus hábitos diarios y realiza un seguimiento 
 
 
 ## Instalación
-Clonar el Repositorio: git clone https://github.com/vicgilnossa/habithailytracker<br><br>
+Clonar el Repositorio: git clone https://github.com/vicgilnossa/habitdailytracker<br><br>
 Instalar Dependencias: flutter pub get<br><br>
 Ejecutar la Aplicación: flutter run
 <div style="display: flex;">
