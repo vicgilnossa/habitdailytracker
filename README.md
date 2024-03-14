@@ -15,9 +15,11 @@ Capturas de Pantalla
 Clonar el Repositorio: git clone https://github.com/vicgilnossa/habithailytracker
 Instalar Dependencias: flutter pub get
 Ejecutar la Aplicación: flutter run
-![Screenshot_1710440769](https://github.com/vicgilnossa/habithailytracker/assets/91137238/954b1e09-8f67-46fa-bdca-0e2d9b3f5b83)
-![Screenshot_1710440817](https://github.com/vicgilnossa/habithailytracker/assets/91137238/8c1fe343-19df-4713-8ad9-0aa2133a1c16)
-![Screenshot_1710440884](https://github.com/vicgilnossa/habithailytracker/assets/91137238/b3a8ea9d-6e54-4d8a-bc49-5d75ae2a62dc)
+<div style="display: flex;">
+  <img src="https://github.com/vicgilnossa/habithailytracker/assets/91137238/954b1e09-8f67-46fa-bdca-0e2d9b3f5b83" alt="Captura de Pantalla 1" style="width: 30%;">
+  <img src="https://github.com/vicgilnossa/habithailytracker/assets/91137238/8c1fe343-19df-4713-8ad9-0aa2133a1c16" alt="Captura de Pantalla 2" style="width: 30%;">
+  <img src="https://github.com/vicgilnossa/habithailytracker/assets/91137238/b3a8ea9d-6e54-4d8a-bc49-5d75ae2a62dc" alt="Captura de Pantalla 2" style="width: 30%;">
+</div>
 
 
 
