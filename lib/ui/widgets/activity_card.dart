@@ -45,9 +45,12 @@ class ActivityCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             children: [
-              Text(
-                activity.name,
-                style: TextStyles.p,
+              Container(
+                width: 130,
+                child: Text(
+                  activity.name,
+                  style: TextStyles.p,
+                ),
               ),
               const Spacer(),
               TimerWidget(activity: activity),

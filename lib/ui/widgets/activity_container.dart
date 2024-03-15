@@ -5,6 +5,7 @@ import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 class ActivityContainer extends StatelessWidget {
   final double? width;
   final double height;
+  final double? textWidth;
   final Color color;
   final String name;
   const ActivityContainer({
@@ -13,6 +14,7 @@ class ActivityContainer extends StatelessWidget {
     required this.height,
     required this.color,
     required this.name,
+    this.textWidth,
   }) : super(key: key);
 
   @override
@@ -37,7 +39,8 @@ class ActivityContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              Padding(
+              Container(
+                width: textWidth,
                 padding: const EdgeInsets.only(left: 10, top: 10),
                 child: Text(
                   name,

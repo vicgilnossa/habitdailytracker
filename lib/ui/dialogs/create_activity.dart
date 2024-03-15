@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:habit_tracker_daily_tasker/services/data.dart';
 
 import 'package:habit_tracker_daily_tasker/services/services.dart';
@@ -71,10 +73,17 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                maxLines: 1,
                 style: TextStyles.h5,
                 cursorColor: Colors.black,
                 autofocus: true,
                 controller: _textEditingController,
+                inputFormatters: <TextInputFormatter>[
+                  CapitalizeFirstLetterFormatter()
+                ],
+                onChanged: (value) {
+                  limitWordFormatter(value, _textEditingController, 2);
+                },
                 decoration: InputDecoration(
                   focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
@@ -115,7 +124,6 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
                         print(
                             'Nombre de la actividad: ${_textEditingController.text}');
                         print('Index traido de la data es: $index');
-                       
 
                         Navigator.pop(context);
                       }
@@ -129,3 +137,4 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
     );
   }
 }
+

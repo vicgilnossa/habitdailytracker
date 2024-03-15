@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 
@@ -65,6 +66,9 @@ class _CreateTaskDialogState extends State<CreateTaskDialog> {
                 cursorColor: Colors.black,
                 autofocus: true,
                 controller: _textEditingController,
+                inputFormatters: <TextInputFormatter>[
+                  CapitalizeFirstLetterFormatter()
+                ],
                 decoration: InputDecoration(
                   focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),

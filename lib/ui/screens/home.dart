@@ -252,7 +252,7 @@ class _ShowActivity extends StatelessWidget {
                   ? Expanded(
                       flex: 2,
                       child: ActivityContainer(
-                        height: 69,
+                        height: 79,
                         color: activities[1].containerColor,
                         name: activities[1].name,
                       ),
@@ -265,7 +265,8 @@ class _ShowActivity extends StatelessWidget {
                   ? Expanded(
                       flex: 1,
                       child: ActivityContainer(
-                        height: 69,
+                        textWidth: 110,
+                        height: 79,
                         color: activities[2].containerColor,
                         name: activities[2].name,
                       ))
@@ -277,7 +278,7 @@ class _ShowActivity extends StatelessWidget {
                   padding: EdgeInsets.only(top: 10),
                   child: ActivityContainer(
                     width: double.infinity,
-                    height: 69,
+                    height: 79,
                     color: activities[0].containerColor,
                     name: activities[0].name,
                   ),

@@ -29,7 +29,6 @@ class TextStyles {
     color: Colors.black.withOpacity(0.6),
   );
   static final TextStyle h5 = GoogleFonts.pressStart2p(
-    
     fontSize: 12,
     color: Colors.black,
   );
