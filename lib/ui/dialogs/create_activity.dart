@@ -137,4 +137,3 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
     );
   }
 }
-

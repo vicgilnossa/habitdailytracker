@@ -251,10 +251,19 @@ class _ShowActivity extends StatelessWidget {
               activities.length >= 2
                   ? Expanded(
                       flex: 2,
-                      child: ActivityContainer(
-                        height: 79,
-                        color: activities[1].containerColor,
-                        name: activities[1].name,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.activityScreen,
+                            arguments: activities[1],
+                          );
+                        },
+                        child: ActivityContainer(
+                          height: 79,
+                          color: activities[1].containerColor,
+                          name: activities[1].name,
+                        ),
                       ),
                     )
                   : Container(),
@@ -264,11 +273,20 @@ class _ShowActivity extends StatelessWidget {
               activities.length >= 3
                   ? Expanded(
                       flex: 1,
-                      child: ActivityContainer(
-                        textWidth: 110,
-                        height: 79,
-                        color: activities[2].containerColor,
-                        name: activities[2].name,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.activityScreen,
+                            arguments: activities[2],
+                          );
+                        },
+                        child: ActivityContainer(
+                          textWidth: 110,
+                          height: 79,
+                          color: activities[2].containerColor,
+                          name: activities[2].name,
+                        ),
                       ))
                   : Expanded(flex: 1, child: Container())
             ],
@@ -276,11 +294,20 @@ class _ShowActivity extends StatelessWidget {
           activities.length >= 1
               ? Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: ActivityContainer(
-                    width: double.infinity,
-                    height: 79,
-                    color: activities[0].containerColor,
-                    name: activities[0].name,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.activityScreen,
+                        arguments: activities[0],
+                      );
+                    },
+                    child: ActivityContainer(
+                      width: double.infinity,
+                      height: 79,
+                      color: activities[0].containerColor,
+                      name: activities[0].name,
+                    ),
                   ),
                 )
               : Container()

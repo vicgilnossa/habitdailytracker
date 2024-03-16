@@ -11,6 +11,7 @@ class Routes {
   static const String showActivities = 'showactivities';
   static const String welcome = 'welcome';
   static const String welcomeSplashScreen = 'welcomesplashscreen';
+  static const String taskScreen = 'taskScreen';
 
   static final Map<String, WidgetBuilder> routes = {
     activityScreen: (context) => const ActivityScreen(),
@@ -19,5 +20,6 @@ class Routes {
     showActivities: (context) => const ShowAllActivitiesScreen(),
     welcome: (context) => const WelcomeScreen(),
     welcomeSplashScreen: (context) => const WelcomeSplashScreen(),
+    taskScreen: (context) => const TaskScreen(),
   };
 }

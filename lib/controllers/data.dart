@@ -142,6 +142,17 @@ class DataController {
     return _oldLength;
   }
 
+  //Determinar la tarea actual
+    Task _task = Task(id: "id", name: "name");
+
+      void setTask(Task task) {
+    _task = task;
+  }
+
+  Task getTask() {
+    return _task;
+  }
+
 //CRUD DE TAREAS
   //create
   int taskCounter = 2;

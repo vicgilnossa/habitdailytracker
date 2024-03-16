@@ -36,6 +36,16 @@ class DataService extends ChangeNotifier {
     return _dailyDataController.getOldLength();
   }
 
+  void setTask(Task task) {
+    notifyListeners();
+    return _dailyDataController.setTask(task);
+  }
+
+  Task getTask() {
+    notifyListeners();
+    return _dailyDataController.getTask();
+  }
+
 //CRUD DE TAREAS
   //create
   Task addTask(

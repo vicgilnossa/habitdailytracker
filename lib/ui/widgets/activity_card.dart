@@ -22,7 +22,11 @@ class ActivityCard extends StatelessWidget {
     final Color color = activity.containerColor;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.activityScreen);
+        Navigator.pushNamed(
+          context,
+          Routes.activityScreen,
+          arguments: activity,
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
@@ -68,11 +72,6 @@ class ActivityCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              CustomCircleButton(
-                  width: 30,
-                  height: 30,
-                  content: const Icon(Ionicons.pencil, size: 20),
-                  onPressed: () {}),
             ],
           ),
         ),
