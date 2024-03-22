@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:habit_tracker_daily_tasker/models/models.dart';
 import 'package:habit_tracker_daily_tasker/routes.dart';
-import 'package:habit_tracker_daily_tasker/services/services.dart';
+
 import 'package:habit_tracker_daily_tasker/ui/dialogs/dialogs.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/custom_circle_button.dart';
 
 import 'package:ionicons/ionicons.dart';
-import 'package:provider/provider.dart';
 
 class ActivityCard extends StatelessWidget {
   final Activity activity;
@@ -19,7 +18,6 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataService = Provider.of<DataService>(context);
     final time = activity.time ?? "00:00:00";
     final Color color = activity.containerColor;
     return GestureDetector(

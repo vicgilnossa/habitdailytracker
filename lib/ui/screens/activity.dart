@@ -8,7 +8,6 @@ import 'package:habit_tracker_daily_tasker/models/models.dart';
 import 'package:habit_tracker_daily_tasker/services/services.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
-import 'package:habit_tracker_daily_tasker/routes.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({Key? key}) : super(key: key);
