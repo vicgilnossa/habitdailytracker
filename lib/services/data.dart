@@ -116,6 +116,11 @@ class DataService extends ChangeNotifier {
     return _dailyDataController.updateActivity(index, updatedActivity);
   }
 
+  void reorderActivitiesByTime(List<Activity> activities) {
+    notifyListeners();
+    return _dailyDataController.reorderActivitiesByTime(activities);
+  }
+
   //delete
   void deleteActivity(int index, String activityId) {
     _dailyDataController.deleteActivity(index, activityId);

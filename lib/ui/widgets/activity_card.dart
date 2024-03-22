@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker_daily_tasker/models/models.dart';
 import 'package:habit_tracker_daily_tasker/routes.dart';
 import 'package:habit_tracker_daily_tasker/services/services.dart';
+import 'package:habit_tracker_daily_tasker/ui/dialogs/dialogs.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/custom_circle_button.dart';
 
@@ -19,6 +20,7 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dataService = Provider.of<DataService>(context);
+    final time = activity.time ?? "00:00:00";
     final Color color = activity.containerColor;
     return GestureDetector(
       onTap: () {
@@ -57,7 +59,10 @@ class ActivityCard extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              TimerWidget(activity: activity),
+              Text(
+                time,
+                style: TextStyles.p,
+              ),
               const SizedBox(
                 width: 20,
               ),
@@ -66,8 +71,12 @@ class ActivityCard extends StatelessWidget {
                   height: 30,
                   content: const Icon(Ionicons.trash, size: 20),
                   onPressed: () {
-                    final index = dataService.getIndex();
-                    dataService.deleteActivity(index, activity.id);
+                    showDialog(
+                        context: context,
+                        builder: (context) => DeleteActivityDialog(
+                              activity: activity,
+                              toHome: false,
+                            ));
                   }),
               const SizedBox(
                 width: 10,

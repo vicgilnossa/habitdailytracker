@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class CustomIconButton extends StatelessWidget {
   final double leftMargin;
   final double topMargin;
+  final double rightMargin;
+  final double bottomMargin;
   final double width;
   final double height;
   final String color;
@@ -10,13 +12,15 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback? onTap;
   const CustomIconButton({
     Key? key,
-    this.leftMargin = 30,
-    this.topMargin = 60,
+    this.leftMargin = 0,
+    this.topMargin = 0,
     required this.width,
     required this.height,
     required this.color,
     required this.image,
     this.onTap,
+    this.rightMargin = 0,
+    this.bottomMargin = 0,
   }) : super(key: key);
 
   @override
@@ -24,7 +28,8 @@ class CustomIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(left: leftMargin, top: topMargin),
+        margin: EdgeInsets.fromLTRB(
+            leftMargin, topMargin, rightMargin, bottomMargin),
         width: width,
         height: height,
         decoration: BoxDecoration(

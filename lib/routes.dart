@@ -15,7 +15,7 @@ class Routes {
 
   static final Map<String, WidgetBuilder> routes = {
     activityScreen: (context) => const ActivityScreen(),
-    animationTest: (context) => const AnimationTestScreen(),
+    animationTest: (context) =>  AnimationTestScreen(),
     home: (context) => const HomeScreen(),
     showActivities: (context) => const ShowAllActivitiesScreen(),
     welcome: (context) => const WelcomeScreen(),

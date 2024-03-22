@@ -12,16 +12,19 @@ class DataController {
       activities: [
         Activity(
             id: "1",
-            name: "1. Trabajo",
-            containerColor: const Color.fromARGB(255, 255, 127, 127)),
+            name: "Trabajo",
+            containerColor: const Color.fromARGB(255, 255, 127, 127),
+            time: "02:03:00"),
         Activity(
-            id: "1",
-            name: "2. Gym",
-            containerColor: Color.fromARGB(255, 156, 255, 85)),
+            id: "2",
+            name: "Gym",
+            containerColor: Color.fromARGB(255, 156, 255, 85),
+            time: "07:03:00"),
         Activity(
-            id: "1",
-            name: "3. Leer",
-            containerColor: Color.fromARGB(255, 105, 145, 255)),
+            id: "3",
+            name: "Leer",
+            containerColor: Color.fromARGB(255, 105, 145, 255),
+            time: "09:03:00"),
       ],
       tasks: [
         Task(
@@ -143,9 +146,9 @@ class DataController {
   }
 
   //Determinar la tarea actual
-    Task _task = Task(id: "id", name: "name");
+  Task _task = Task(id: "id", name: "name");
 
-      void setTask(Task task) {
+  void setTask(Task task) {
     _task = task;
   }
 
@@ -253,10 +256,31 @@ class DataController {
         .indexWhere((activity) => activity.id == updatedActivity.id);
     if (internalIndex != -1) {
       dailyData[index].activities[internalIndex] = updatedActivity;
+      print(updatedActivity.name);
+      print(updatedActivity.time);
       return updatedActivity;
     } else {
       throw Exception('Tarea no encontrada');
     }
+  }
+
+  void reorderActivitiesByTime(List<Activity> activities) {
+    activities.sort((a, b) {
+      // Convertir la cadena de tiempo a un objeto Duration
+      final timeA = Duration(
+        hours: int.parse(a.time!.split(':')[0]),
+        minutes: int.parse(a.time!.split(':')[1]),
+        seconds: int.parse(a.time!.split(':')[2]),
+      );
+      final timeB = Duration(
+        hours: int.parse(b.time!.split(':')[0]),
+        minutes: int.parse(b.time!.split(':')[1]),
+        seconds: int.parse(b.time!.split(':')[2]),
+      );
+
+      // Comparar el tiempo acumulado de las dos actividades
+      return timeB.compareTo(timeA); // Orden descendente
+    });
   }
 
   //delete

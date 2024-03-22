@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:habit_tracker_daily_tasker/services/data.dart';
-
 import 'package:habit_tracker_daily_tasker/services/services.dart';
 import 'package:habit_tracker_daily_tasker/ui/styles/styles.dart';
 import 'package:habit_tracker_daily_tasker/ui/widgets/widgets.dart';
@@ -40,7 +39,7 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
     });
   }
 
-  void _onColorSelected(Color color) {
+  void onColorSelected(Color color) {
     setState(() {
       _containerColor = color; // Actualizar el color seleccionado
     });
@@ -57,7 +56,7 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
         child: Container(
           padding: const EdgeInsets.all(40),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 145, 0),
+            color: Color.fromARGB(255, 255, 195, 116),
             border: Border.all(color: Colors.black, width: 1),
             boxShadow: const [
               BoxShadow(
@@ -95,7 +94,7 @@ class _CreateActivityDialogState extends State<CreateActivityDialog> {
               SizedBox(
                 width: double.infinity,
                 height: 90,
-                child: ColorCarousel(onColorSelected: _onColorSelected),
+                child: ColorCarousel(onColorSelected: onColorSelected),
               ),
               ElevatedButton(
                 style: ButtonStyle(

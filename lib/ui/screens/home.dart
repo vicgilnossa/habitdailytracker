@@ -215,6 +215,7 @@ class _ShowActivity extends StatelessWidget {
     final dataService = Provider.of<DataService>(context);
     final index = dataService.getIndex();
     final List<Activity> activities = dataService.getAllActivities(index);
+    dataService.reorderActivitiesByTime(activities);
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
       child: Column(
@@ -263,6 +264,7 @@ class _ShowActivity extends StatelessWidget {
                           height: 79,
                           color: activities[1].containerColor,
                           name: activities[1].name,
+                          time: activities[1].time!,
                         ),
                       ),
                     )
@@ -286,6 +288,7 @@ class _ShowActivity extends StatelessWidget {
                           height: 79,
                           color: activities[2].containerColor,
                           name: activities[2].name,
+                          time: activities[2].time!,
                         ),
                       ))
                   : Expanded(flex: 1, child: Container())
@@ -307,6 +310,7 @@ class _ShowActivity extends StatelessWidget {
                       height: 79,
                       color: activities[0].containerColor,
                       name: activities[0].name,
+                      time: activities[0].time!,
                     ),
                   ),
                 )
@@ -411,3 +415,4 @@ class CustomEmojiButton extends StatelessWidget {
     );
   }
 }
+
